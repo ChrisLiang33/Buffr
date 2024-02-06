@@ -5,4 +5,4 @@ cd buffr
 
 npm i
 
-npm dev
+npm run dev
