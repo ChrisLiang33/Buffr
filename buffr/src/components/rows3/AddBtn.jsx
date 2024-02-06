@@ -21,3 +21,4 @@ function MyComponent(props) {
     </>
   );
 }
+export default MyComponent;
