@@ -1,9 +1,5 @@
 function App() {
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline">This is App Components</h1>
-    </>
-  );
+  return <></>;
 }
 
 export default App;
