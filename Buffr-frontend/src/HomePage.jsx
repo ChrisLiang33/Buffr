@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import BuffrIcon from "./components/rows3/BuffrIcon";
 import SearchBar from "./components/SearchBar";

@@ -1,9 +1,8 @@
 import React from "react";
 import { HiOutlineRectangleStack } from "react-icons/hi2";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const HomeTransactionBtn = () => {
-  const navigate = useNavigate();
   return (
     <Link
       to={"/transactions"}

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"; // Removed Link as it's no longer used here
+import { Routes, Route } from "react-router-dom";
 import AccountPage from "./AccountPage.jsx";
 import HomePage from "./HomePage.jsx";
 import HomeFooter from "./HomeFooter.jsx";

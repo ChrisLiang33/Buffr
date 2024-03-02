@@ -4,12 +4,9 @@ import { Link } from "react-router-dom";
 const LoansPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-50">
-      {" "}
       <div className="p-8 bg-blue-100 rounded-lg shadow-lg">
-        {" "}
-        <h1 className="text-3xl font-bold text-blue-700">Loans Page</h1>{" "}
+        <h1 className="text-3xl font-bold text-blue-700">Loans Page</h1>
         <p className="mt-4 text-blue-600">
-          {" "}
           Explore your loan options or manage existing loans. Discover flexible
           payment plans and competitive rates to suit your needs.
         </p>

@@ -1,8 +1,8 @@
 import React from "react";
 import { GoHome } from "react-icons/go";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 const HomeFooterBtn = () => {
-  const navigate = useNavigate();
   return (
     <Link
       to={"/"}

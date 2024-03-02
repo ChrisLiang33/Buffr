@@ -1,9 +1,8 @@
 import React from "react";
 import { FaMoneyBillWave } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const HomeLoanBtn = () => {
-  const navigate = useNavigate();
   return (
     <Link
       to={"/loans"}

@@ -1,5 +1,4 @@
 import AddBtn from "./components/rows3/AddBtn.jsx";
-import BuffrIcon from "./components/rows3/BuffrIcon.jsx";
 import UserBank from "./components/rows3/UserBank.jsx";
 import BackBtn from "./components/rows3/BackBtn.jsx";
 
@@ -53,7 +52,6 @@ const Test = () => {
             />
           ))}
         </div>
-
         <div className="flex justify-center items-center min-h-screen">
           <AddBtn text="Add Account" />
         </div>
