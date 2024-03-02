@@ -33,7 +33,6 @@ const Test = () => {
       <br />
       <div className="flex flex-col min-h-screen">
         <div className="flex-1">
-          {/* Header and content */}
           <div className="flex gap-5 justify-between px-4 py-2 bg-white max-w-[393px]">
             <BackBtn />
             <div className="my-auto text-lg font-medium leading-7 text-center text-slate-950">
