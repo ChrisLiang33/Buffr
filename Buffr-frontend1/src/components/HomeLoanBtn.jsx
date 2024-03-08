@@ -1,16 +1,17 @@
 import React from "react";
-import { GoHome } from "react-icons/go";
+import { IoCashOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
-const HomeFooterBtn = () => {
+const HomeLoanBtn = () => {
   return (
     <Link
-      to={"/"}
+      to={"/loans"}
       className="flex flex-col items-center justify-center font-bold py-2 px-4 rounded hover:bg-gray-200 transition duration-200 ease-in-out"
     >
-      <GoHome className="mb-2" /> Home
+      <IoCashOutline className="mb-2 text-2xl" />
+      Loans
     </Link>
   );
 };
 
-export default HomeFooterBtn;
+export default HomeLoanBtn;

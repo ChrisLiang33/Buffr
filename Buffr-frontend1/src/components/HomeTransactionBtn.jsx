@@ -1,17 +1,16 @@
 import React from "react";
-import { FaMoneyBillWave } from "react-icons/fa";
+import { HiOutlineRectangleStack } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 
-const HomeLoanBtn = () => {
+const HomeTransactionBtn = () => {
   return (
     <Link
-      to={"/loans"}
+      to={"/transactions"}
       className="flex flex-col items-center justify-center font-bold py-2 px-4 rounded hover:bg-gray-200 transition duration-200 ease-in-out"
     >
-      <FaMoneyBillWave className="mb-2 text-lg" />
-      Loans
+      <HiOutlineRectangleStack className="mb-2 text-2xl" /> Transactions
     </Link>
   );
 };
 
-export default HomeLoanBtn;
+export default HomeTransactionBtn;

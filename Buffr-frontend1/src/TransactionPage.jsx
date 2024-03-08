@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import OtherFooter from "./OtherFooter";
 
 const TransactionPage = () => {
   return (
@@ -19,6 +20,7 @@ const TransactionPage = () => {
           Home
         </Link>
       </div>
+      <OtherFooter />
     </div>
   );
 };

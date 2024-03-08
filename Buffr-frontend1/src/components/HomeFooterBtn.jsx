@@ -1,16 +1,16 @@
 import React from "react";
-import { HiOutlineRectangleStack } from "react-icons/hi2";
+import { HiOutlineHomeModern } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 
-const HomeTransactionBtn = () => {
+const HomeFooterBtn = () => {
   return (
     <Link
-      to={"/transactions"}
+      to={"/"}
       className="flex flex-col items-center justify-center font-bold py-2 px-4 rounded hover:bg-gray-200 transition duration-200 ease-in-out"
     >
-      <HiOutlineRectangleStack className="mb-2" /> Transactions
+      <HiOutlineHomeModern className="mb-2 text-2xl" /> Home
     </Link>
   );
 };
 
-export default HomeTransactionBtn;
+export default HomeFooterBtn;
