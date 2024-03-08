@@ -1,6 +1,6 @@
-import AddBtn from "./components/rows3/AddBtn.jsx";
-import UserBank from "./components/rows3/UserBank.jsx";
-import BackBtn from "./components/rows3/BackBtn.jsx";
+import AddBtn from "./components/AddBtn.jsx";
+import UserBank from "./components/UserBank.jsx";
+import BackBtn from "./components/BackBtn.jsx";
 
 const Test = () => {
   const bankAccounts = [

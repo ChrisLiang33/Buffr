@@ -15,6 +15,7 @@ const SimpleAddButton = () => {
         style={{ height: "calc(10rem + 2rem)" }}
       >
         <Link
+          to={"/addwallet"}
           onClick={addWallet}
           className="border bg-gray-50 p-4 text-center flex flex-col items-center justify-center rounded-2xl h-40"
         >

@@ -1,4 +1,4 @@
-import icon from "../../assets/icon.svg";
+import icon from "../assets/icon.svg";
 function BuffrIcon() {
   return (
     <div className="flex justify-center items-center ">

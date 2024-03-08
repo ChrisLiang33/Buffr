@@ -1,7 +1,6 @@
 import React from "react";
-import BuffrIcon from "./components/rows3/BuffrIcon";
-import vector from "./assets/vector.svg";
-
+import BuffrIcon from "./components/BuffrIcon";
+import VectorStripe from "./VectorStripe";
 import HomeGrid from "./components/HomeGrid";
 import HomeWallet from "./components/HomeWallet";
 import BankDetails from "./components/BankDetails";
@@ -14,14 +13,7 @@ const HomePage = () => {
       <HomeNavbar />
       <BuffrIcon />
       <BankDetails />
-      <div className="relative">
-        {" "}
-        <img
-          src={vector}
-          alt=""
-          className="absolute z-negative top-0 left-0"
-        />{" "}
-      </div>
+      <VectorStripe />
       <HomeWallet />
       <HomeGrid />
       <HomeFooter />
