@@ -11,7 +11,6 @@ const HomePage = () => {
   return (
     <div>
       <HomeNavbar />
-      <BuffrIcon />
       <BankDetails />
       <VectorStripe />
       <HomeWallet />

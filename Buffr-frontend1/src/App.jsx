@@ -8,6 +8,8 @@ import QRPage from "./QRPage.jsx";
 import AddWallet from "./AddWallet.jsx";
 import Setting from "./Setting.jsx";
 import Notification from "./Notification.jsx";
+import AddMoney from "./AddMoney.jsx";
+import CardDetail from "./CardDetail.jsx";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/addwallet" element={<AddWallet />} />
         <Route path="/settings" element={<Setting />} />
         <Route path="/notification" element={<Notification />} />
+        <Route path="/addmoney" element={<AddMoney />} />
+        <Route path="/card" element={<CardDetail />} />
       </Routes>
     </>
   );
