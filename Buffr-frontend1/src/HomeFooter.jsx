@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const FooterButtons = () => {
   return (
-    <div className="fixed inset-x-0 bottom-0 flex flex-col items-center shadow-lg rounded-2xl">
+    <div className="sticky inset-x-0 bottom-0 flex flex-col items-center shadow-lg rounded-2xl">
       <div className="flex justify-center w-full mb-4 gap-4">
         <Link
           to={"/send"}
