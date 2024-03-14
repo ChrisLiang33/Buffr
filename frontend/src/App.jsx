@@ -10,6 +10,7 @@ import Setting from "./Setting.jsx";
 import Notification from "./Notification.jsx";
 import AddMoney from "./AddMoney.jsx";
 import CardDetail from "./CardDetail.jsx";
+import ToContact from "./ToContact.jsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/notification" element={<Notification />} />
         <Route path="/addmoney" element={<AddMoney />} />
         <Route path="/card" element={<CardDetail />} />
+        <Route path="/send/tocontact" element={<ToContact />} />
       </Routes>
     </>
   );
