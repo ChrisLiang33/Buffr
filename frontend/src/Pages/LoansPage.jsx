@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import OtherFooter from "./OtherFooter";
+import OtherFooter from "../components/OtherFooter";
 const LoansPage = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-50">

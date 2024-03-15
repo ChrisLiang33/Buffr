@@ -1,6 +1,6 @@
-import AddBtn from "./components/AddBtn.jsx";
-import UserBank from "./components/UserBank.jsx";
-import BackBtn from "./components/BackBtn.jsx";
+// import AddBtn from "./components/Btns/AddBtn.jsx";
+import UserBank from "../components/UserBank.jsx";
+import BackBtn from "../components/Btns/BackBtn.jsx";
 
 const Test = () => {
   const bankAccounts = [
@@ -53,7 +53,7 @@ const Test = () => {
           ))}
         </div>
         <div className="flex justify-center items-center min-h-screen">
-          <AddBtn text="Add Account" />
+          {/* <AddBtn text="Add Account" /> */}
         </div>
       </div>
     </>

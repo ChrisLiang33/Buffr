@@ -1,7 +1,7 @@
 import React from "react";
-import HomeFooterBtn from "./components/HomeFooterBtn";
-import HomeTransactionBtn from "./components/HomeTransactionBtn";
-import HomeLoanBtn from "./components/HomeLoanBtn";
+import HomeFooterBtn from "./Btns/HomeFooterBtn";
+import HomeTransactionBtn from "./Btns/HomeTransactionBtn";
+import HomeLoanBtn from "./Btns/HomeLoanBtn";
 import { IoQrCodeOutline } from "react-icons/io5";
 import { LuSendHorizonal } from "react-icons/lu";
 import { Link } from "react-router-dom";

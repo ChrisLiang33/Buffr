@@ -1,5 +1,5 @@
 import React from "react";
-import card from "../assets/card.svg";
+import card from "../../assets/card.svg";
 
 const CardBtn = () => {
   return (

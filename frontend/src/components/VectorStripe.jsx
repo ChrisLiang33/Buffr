@@ -1,5 +1,5 @@
 import React from "react";
-import vector from "./assets/vector.svg";
+import vector from "../assets/vector.svg";
 
 const VectorStripe = () => {
   return (

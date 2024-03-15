@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SliderBar from "./SliderBar";
-import CardBtn from "./CardBtn";
+import CardBtn from "./Btns/CardBtn";
 
 const BankAccountComponent = () => {
   const balance = 5000;

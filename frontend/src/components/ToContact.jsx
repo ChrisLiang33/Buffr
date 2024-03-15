@@ -1,9 +1,6 @@
 import React from "react";
-import BackBtn from "./components/BackBtn";
-import SearchBar from "./components/SearchBar";
-import BuffrIcon from "./components/BuffrIcon";
-import icon from "./assets/icon.svg";
-import { Link } from "react-router-dom";
+import BackBtn from "./Btns/BackBtn";
+import icon from "../assets/icon.svg";
 
 const SendingPage = () => {
   return (

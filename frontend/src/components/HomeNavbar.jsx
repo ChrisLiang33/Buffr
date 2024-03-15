@@ -1,6 +1,6 @@
 import SearchBar from "./SearchBar";
-import NotificationBtn from "./NotificationBtn";
-import SettingBtn from "./SettingBtn";
+import NotificationBtn from "./Btns/NotificationBtn";
+import SettingBtn from "./Btns/SettingBtn";
 
 const HomeNavbar = () => {
   return (
