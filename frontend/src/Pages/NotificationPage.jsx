@@ -24,7 +24,7 @@ const NotificationPage = () => {
             <div className="text-4xl font-semibold mb-2">
               Notifications Not Available
             </div>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-gray-600 px-4">
               Head lily or giant glasses it and. Tonight a pumpkin snargaluff
               nose plums
             </div>
