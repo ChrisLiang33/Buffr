@@ -4,13 +4,15 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App.jsx";
 import Test from "./Test.jsx";
+import TestTransfer from "./TestTransfer.jsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
-      {/* <Test /> */}
+      {/* <App /> */}
+      <Test />
+      <TestTransfer />
     </BrowserRouter>
   </React.StrictMode>
 );
