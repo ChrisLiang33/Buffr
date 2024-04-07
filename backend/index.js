@@ -1,136 +1,47 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-const bcrypt = require("bcryptjs");
-const cors = require("cors");
-const jwt = require("jsonwebtoken");
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
-require("dotenv").config();
-const app = express();
-const PORT = process.env.PORT || 5000;
-const User = require("./models/User");
-const Transfer = require("./models/Transfer");
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-app.use(cors());
-app.use(bodyParser.json());
-
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log(err));
-
-app.post("/login", async (req, res) => {
-  try {
-    const { phoneNumber, password } = req.body;
-    const user = await User.findOne({ phoneNumber });
-    if (!user) return res.status(400).json({ msg: "User does not exist" });
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: "Incorrect password" });
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "24h",
-    });
-    res.json({ token });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
-});
-
-const authMiddleware = (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res
-      .status(401)
-      .json({ message: "Unauthorized - Missing or invalid token" });
-  }
-
-  const token = authHeader.split(" ")[1]; // Extract token from header
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      return res.status(401).json({ message: "Unauthorized - Invalid token" });
-    }
-    req.user = decoded.id; // Assuming the decoded token contains the user ID
-    next(); // Call next middleware
-  });
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDI7XED0HLxm6XZc_1FWDZHHA3YteF0u_I",
+  authDomain: "buffr-ab4399.firebaseapp.com",
+  projectId: "buffr-ab4399",
+  storageBucket: "buffr-ab4399.appspot.com",
+  messagingSenderId: "678833109356",
+  appId: "1:678833109356:web:7a5af1d9b9d11255c7db49",
+  measurementId: "G-QY4SX3X4CS",
 };
 
-app.get("/balance", authMiddleware, async (req, res) => {
-  try {
-    const user = await User.findById(req.userId);
-    if (!user) return res.status(404).json({ msg: "User not found" });
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const provider = new GoogleAuthProvider();
 
-    res.json({ balance: user.balance });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
-});
+const auth = getAuth();
 
-app.post("/signup", async (req, res) => {
-  try {
-    const { phoneNumber, password } = req.body;
-    let user = await User.findOne({ phoneNumber });
-    if (user) return res.status(400).json({ msg: "User already exists" });
-    user = new User({
-      phoneNumber,
-      password,
-    });
-
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(password, salt);
-
-    await user.save();
-
-    res.json({ msg: "User registered successfully" });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
-});
-
-app.get("/users", async (req, res) => {
-  try {
-    const users = await User.find({}, "name phoneNumber");
-    res.json(users);
-  } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).json({ error: "Server error" });
-  }
-});
-
-app.post("/transfer", authMiddleware, async (req, res) => {
-  try {
-    const { senderId, receiverId, amount } = req.body;
-
-    const transferAmount = parseFloat(amount);
-
-    const sender = await User.findById(senderId);
-    const receiver = await User.findById(receiverId);
-    if (!sender || !receiver) {
-      return res.status(404).json({ msg: "Sender or receiver not found" });
-    }
-    if (sender.balance < amount) {
-      return res.status(400).json({ msg: "Insufficient balance" });
-    }
-
-    sender.balance -= transferAmount;
-    receiver.balance += transferAmount;
-
-    await sender.save();
-    await receiver.save();
-
-    const transfer = new Transfer({
-      sender: senderId,
-      receiver: receiverId,
-      amount,
-    });
-    await transfer.save();
-
-    res.json({ msg: "Transfer successful" });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
-});
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
