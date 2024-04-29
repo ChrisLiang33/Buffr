@@ -11,13 +11,15 @@ import NotificationPage from "./Pages/NotificationPage.jsx";
 import AddMoney from "./components/AddMoney.jsx";
 import CardDetail from "./components/CardDetail.jsx";
 import ToContact from "./components/ToContact.jsx";
+import LoginPage from "./Pages/LoginPage.jsx";
 
 function App() {
   return (
     <>
       <Routes>
         <Route path="/account" element={<AccountPage />} />
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/transactions" element={<TransactionPage />} />
         <Route path="/loans" element={<LoansPage />} />
         <Route path="/send" element={<SendingPage />} />
