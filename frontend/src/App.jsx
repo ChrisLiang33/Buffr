@@ -1,4 +1,6 @@
 import { Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import AccountPage from "./Pages/AccountPage.jsx";
 import HomePage from "./Pages/HomePage.jsx";
 import TransactionPage from "./Pages/TransactionPage.jsx";
@@ -15,23 +17,107 @@ import LoginPage from "./Pages/LoginPage.jsx";
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <Routes>
-        <Route path="/account" element={<AccountPage />} />
         <Route path="/" element={<LoginPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/transactions" element={<TransactionPage />} />
-        <Route path="/loans" element={<LoansPage />} />
-        <Route path="/send" element={<SendingPage />} />
-        <Route path="/qrcode" element={<QRPage />} />
-        <Route path="/addwallet" element={<AddWallet />} />
-        <Route path="/settings" element={<Setting />} />
-        <Route path="/notification" element={<NotificationPage />} />
-        <Route path="/addmoney" element={<AddMoney />} />
-        <Route path="/card" element={<CardDetail />} />
-        <Route path="/send/tocontact" element={<ToContact />} />
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              <AccountPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/transactions"
+          element={
+            <ProtectedRoute>
+              <TransactionPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/loans"
+          element={
+            <ProtectedRoute>
+              <LoansPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/send"
+          element={
+            <ProtectedRoute>
+              <SendingPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/qrcode"
+          element={
+            <ProtectedRoute>
+              <QRPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/addwallet"
+          element={
+            <ProtectedRoute>
+              <AddWallet />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <ProtectedRoute>
+              <Setting />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/notification"
+          element={
+            <ProtectedRoute>
+              <NotificationPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/addmoney"
+          element={
+            <ProtectedRoute>
+              <AddMoney />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/card"
+          element={
+            <ProtectedRoute>
+              <CardDetail />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/send/tocontact"
+          element={
+            <ProtectedRoute>
+              <ToContact />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-    </>
+    </AuthProvider>
   );
 }
 
