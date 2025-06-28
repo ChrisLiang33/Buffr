@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../contexts/AuthContext";
 import { useNotification } from "../contexts/NotificationContext";
 import { useOffline } from "../hooks/useOffline";
+import ResponsiveContainer from "../components/layout/ResponsiveContainer";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 import ErrorMessage from "../components/ui/ErrorMessage";
 import OtherFooter from "../components/OtherFooter";
@@ -231,26 +232,32 @@ const LoansPage = () => {
     <div className="min-h-screen bg-blue-50">
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+        <ResponsiveContainer className="py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <Link to="/home" className="text-gray-600 hover:text-gray-800">
+              <Link
+                to="/home"
+                className="text-gray-600 hover:text-gray-800 p-1"
+              >
                 <IoArrowBack className="w-6 h-6" />
               </Link>
-              <h1 className="text-2xl font-bold text-gray-900">Loans</h1>
+              <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+                Loans
+              </h1>
             </div>
             <button
               onClick={() => setShowLoanForm(true)}
-              className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+              className="flex items-center space-x-2 bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
             >
-              <IoAdd className="w-5 h-5" />
-              <span>Apply for Loan</span>
+              <IoAdd className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="hidden sm:inline">Apply for Loan</span>
+              <span className="sm:hidden">Apply</span>
             </button>
           </div>
-        </div>
+        </ResponsiveContainer>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-6">
+      <ResponsiveContainer className="py-6">
         {error && (
           <ErrorMessage
             message={error}
@@ -269,7 +276,7 @@ const LoansPage = () => {
 
         {/* Current Loans */}
         <div className="mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">
             Your Loans
           </h2>
           {loans.length === 0 ? (
@@ -290,9 +297,9 @@ const LoansPage = () => {
               {loans.map((loan) => (
                 <div
                   key={loan.id}
-                  className="bg-white rounded-lg p-6 shadow-sm"
+                  className="bg-white rounded-lg p-4 sm:p-6 shadow-sm"
                 >
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 space-y-2 sm:space-y-0">
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900">
                         {loan.type}
@@ -311,7 +318,7 @@ const LoansPage = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                     <div>
                       <p className="text-sm text-gray-600">Original Amount</p>
                       <p className="text-lg font-semibold">
@@ -353,18 +360,20 @@ const LoansPage = () => {
 
         {/* Loan Types */}
         <div className="mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">
             Available Loan Types
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
             {loanTypes.map((loanType) => (
               <div
                 key={loanType.id}
-                className="bg-white rounded-lg p-6 shadow-sm"
+                className="bg-white rounded-lg p-4 sm:p-6 shadow-sm"
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <span className="text-2xl">{loanType.icon}</span>
+                    <span className="text-2xl sm:text-3xl">
+                      {loanType.icon}
+                    </span>
                     <div>
                       <h3 className="text-lg font-semibold text-gray-900">
                         {loanType.name}
@@ -428,15 +437,15 @@ const LoansPage = () => {
             ))}
           </div>
         </div>
-      </div>
+      </ResponsiveContainer>
 
       {/* Loan Application Modal */}
       {showLoanForm && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">
+            <div className="p-4 sm:p-6">
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
                   {selectedLoanType
                     ? `Apply for ${selectedLoanType.name}`
                     : "Loan Application"}
@@ -452,9 +461,9 @@ const LoansPage = () => {
                       monthlyIncome: "",
                     });
                   }}
-                  className="text-gray-400 hover:text-gray-600"
+                  className="text-gray-400 hover:text-gray-600 p-1"
                 >
-                  <IoClose className="w-6 h-6" />
+                  <IoClose className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </div>
 
@@ -594,7 +603,7 @@ const LoansPage = () => {
                   </div>
                 )}
 
-                <div className="flex space-x-3 pt-4">
+                <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 pt-4">
                   <button
                     type="button"
                     onClick={() => {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useNotification } from "../contexts/NotificationContext";
 import { useOffline } from "../hooks/useOffline";
+import ResponsiveContainer from "./layout/ResponsiveContainer";
 import {
   IoPhonePortraitOutline,
   IoTicketOutline,
@@ -133,41 +134,43 @@ const HomeGrid = () => {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-4 p-4 pb-5">
-        {gridItems.map((item) => {
-          const Icon = item.icon;
-          return (
-            <button
-              key={item.id}
-              onClick={() => handleServiceClick(item.id)}
-              className={`border ${item.bgColor} p-4 text-center flex flex-col items-center justify-center rounded-2xl transition-all duration-200 ${item.hoverColor} hover:shadow-md`}
-            >
-              <Icon className={`text-3xl mb-2 ${item.color}`} />
-              <span className="text-sm font-medium text-gray-700">
-                {item.title}
-              </span>
-              <span className="text-xs text-gray-500 mt-1">
-                {item.description}
-              </span>
-            </button>
-          );
-        })}
-      </div>
+      <ResponsiveContainer className="py-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-6">
+          {gridItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.id}
+                onClick={() => handleServiceClick(item.id)}
+                className={`border ${item.bgColor} p-3 sm:p-4 text-center flex flex-col items-center justify-center rounded-xl sm:rounded-2xl transition-all duration-200 ${item.hoverColor} hover:shadow-md hover:scale-105 min-h-[100px] sm:min-h-[120px] lg:min-h-[140px]`}
+              >
+                <Icon className={`text-2xl sm:text-3xl mb-2 ${item.color}`} />
+                <span className="text-xs sm:text-sm font-medium text-gray-700 leading-tight">
+                  {item.title}
+                </span>
+                <span className="text-xs text-gray-500 mt-1 leading-tight hidden sm:block">
+                  {item.description}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </ResponsiveContainer>
 
       {/* Mobile Recharge Modal */}
       {showMobileRecharge && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg max-w-md w-full">
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-semibold text-gray-900">
+          <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-4 sm:p-6">
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h2 className="text-lg sm:text-xl font-semibold text-gray-900">
                   Mobile Recharge
                 </h2>
                 <button
                   onClick={() => setShowMobileRecharge(false)}
-                  className="text-gray-400 hover:text-gray-600"
+                  className="text-gray-400 hover:text-gray-600 p-1"
                 >
-                  <IoClose className="w-6 h-6" />
+                  <IoClose className="w-5 h-5 sm:w-6 sm:h-6" />
                 </button>
               </div>
 
@@ -237,7 +240,7 @@ const HomeGrid = () => {
                   </select>
                 </div>
 
-                <div className="flex space-x-3 pt-4">
+                <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-3 pt-4">
                   <button
                     type="button"
                     onClick={() => setShowMobileRecharge(false)}

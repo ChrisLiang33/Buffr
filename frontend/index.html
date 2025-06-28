@@ -1,13 +1,184 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="theme-color" content="#3b82f6" />
+    <meta
+      name="description"
+      content="Buffr - Your comprehensive digital payment and financial services companion"
+    />
+    <meta
+      name="keywords"
+      content="digital payments, mobile banking, loans, financial services, money transfer"
+    />
+    <meta name="author" content="Buffr Team" />
+
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Buffr" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-TileColor" content="#3b82f6" />
+    <meta name="msapplication-tap-highlight" content="no" />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Buffr - Your Payment Companion" />
+    <meta
+      property="og:description"
+      content="A comprehensive digital payment and financial services application"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://buffr.app" />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Buffr - Your Payment Companion" />
+    <meta
+      name="twitter:description"
+      content="A comprehensive digital payment and financial services application"
+    />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="/apple-touch-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/apple-touch-icon-180x180.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="167x167"
+      href="/apple-touch-icon-167x167.png"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Prevent zoom on input focus for mobile -->
+    <style>
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="number"],
+      input[type="tel"],
+      textarea,
+      select {
+        font-size: 16px !important;
+      }
+
+      /* Prevent horizontal scroll on mobile */
+      body {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      /* Smooth scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Better touch targets for mobile */
+      button,
+      a,
+      input,
+      select,
+      textarea {
+        min-height: 44px;
+        min-width: 44px;
+      }
+
+      /* Responsive container */
+      .container-responsive {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      @media (min-width: 640px) {
+        .container-responsive {
+          padding: 0 1.5rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .container-responsive {
+          padding: 0 2rem;
+        }
+      }
+    </style>
+
+    <title>Buffr - Your Payment Companion</title>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- PWA Install Prompt -->
+    <script>
+      // Register service worker
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((registration) => {
+              console.log("SW registered: ", registration);
+            })
+            .catch((registrationError) => {
+              console.log("SW registration failed: ", registrationError);
+            });
+        });
+      }
+
+      // PWA Install prompt
+      let deferredPrompt;
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+
+        // Show install button or banner
+        const installButton = document.getElementById("install-button");
+        if (installButton) {
+          installButton.style.display = "block";
+          installButton.addEventListener("click", () => {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === "accepted") {
+                console.log("User accepted the install prompt");
+              } else {
+                console.log("User dismissed the install prompt");
+              }
+              deferredPrompt = null;
+              installButton.style.display = "none";
+            });
+          });
+        }
+      });
+
+      // Handle app installed event
+      window.addEventListener("appinstalled", (evt) => {
+        console.log("App was installed");
+      });
+    </script>
   </body>
 </html>

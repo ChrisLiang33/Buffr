@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
 import { NotificationProvider } from "./contexts/NotificationContext";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import PWAInstallPrompt from "./components/ui/PWAInstallPrompt.jsx";
 import AccountPage from "./Pages/AccountPage.jsx";
 import HomePage from "./Pages/HomePage.jsx";
 import TransactionPage from "./Pages/TransactionPage.jsx";
@@ -119,6 +120,7 @@ function App() {
             }
           />
         </Routes>
+        <PWAInstallPrompt />
       </AuthProvider>
     </NotificationProvider>
   );

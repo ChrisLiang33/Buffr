@@ -1,46 +1,46 @@
 import React from "react";
 import { useAuthContext } from "../contexts/AuthContext";
 import { useOffline } from "../hooks/useOffline";
-import BuffrIcon from "../components/BuffrIcon";
-import VectorStripe from "../components/VectorStripe";
-import HomeGrid from "../components/HomeGrid";
-import HomeWallet from "../components/HomeWallet";
-import BankDetails from "../components/BankDetails";
+import ResponsiveContainer from "../components/layout/ResponsiveContainer";
 import HomeNavbar from "../components/HomeNavbar";
+import HomeWallet from "../components/HomeWallet";
+import HomeGrid from "../components/HomeGrid";
 import HomeFooter from "../components/HomeFooter";
 import OfflineIndicator from "../components/ui/OfflineIndicator";
 import ErrorMessage from "../components/ui/ErrorMessage";
 
 const HomePage = () => {
-  const { user, userData, error } = useAuthContext();
+  const { user, userData } = useAuthContext();
   const { isOffline } = useOffline();
 
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-blue-50">
+        <ErrorMessage
+          message="Please log in to access your account"
+          type="error"
+        />
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <HomeNavbar />
-
-      {error && (
-        <div className="px-4 py-2">
-          <ErrorMessage message={error} type="error" className="mb-4" />
-        </div>
-      )}
-
-      {isOffline && (
-        <div className="px-4 py-2">
-          <ErrorMessage
-            message="You are currently offline. Some features may be limited."
-            type="warning"
-            className="mb-4"
-          />
-        </div>
-      )}
-
-      <BankDetails />
-      <VectorStripe />
-      <HomeWallet />
-      <HomeGrid />
-      <HomeFooter />
+    <div className="min-h-screen bg-blue-50">
       <OfflineIndicator />
+
+      <ResponsiveContainer className="py-4">
+        <HomeNavbar />
+      </ResponsiveContainer>
+
+      <ResponsiveContainer className="py-4">
+        <HomeWallet />
+      </ResponsiveContainer>
+
+      <HomeGrid />
+
+      <ResponsiveContainer className="py-4">
+        <HomeFooter />
+      </ResponsiveContainer>
     </div>
   );
 };
